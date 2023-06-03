@@ -9,7 +9,7 @@ services:
     restart: always
     environment:
       environment:
-      MYSQL_RBOOT_PASSWORD: strongrootpassword
+      MYSQL_ROOT_PASSWORD: strongrootpassword
       #      MYSQL_RßOOT_PASSWORD: password エラーが出てパスワードを初期化のため修正
       MYSQL_DATABASE: name_database
       MYSQL_USER: user
