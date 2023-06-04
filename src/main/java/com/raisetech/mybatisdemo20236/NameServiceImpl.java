@@ -5,11 +5,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class NameServiceImple implements NameService {
+public class NameServiceImpl implements NameService {
 
     private final NameMapper nameMapper;
 
-    public NameServiceImple(NameMapper nameMapper) {
+    public NameServiceImpl(NameMapper nameMapper) {
         this.nameMapper = nameMapper;
     }
 
