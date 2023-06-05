@@ -1,9 +1,9 @@
 package com.raisetech.mybatisdemo20236.controller;
 
-import com.raisetech.mybatisdemo20236.NameService;
 import com.raisetech.mybatisdemo20236.entity.Name;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import service.NameService;
 
 import java.util.List;
 
