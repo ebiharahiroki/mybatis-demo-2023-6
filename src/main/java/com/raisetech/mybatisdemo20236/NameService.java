@@ -1,5 +1,7 @@
 package com.raisetech.mybatisdemo20236;
 
+import com.raisetech.mybatisdemo20236.entity.Name;
+
 import java.util.List;
 
 public interface NameService {
