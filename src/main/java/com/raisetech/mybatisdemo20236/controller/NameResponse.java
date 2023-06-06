@@ -1,4 +1,6 @@
-package com.raisetech.mybatisdemo20236;
+package com.raisetech.mybatisdemo20236.controller;
+
+import com.raisetech.mybatisdemo20236.entity.Name;
 
 public class NameResponse {
 

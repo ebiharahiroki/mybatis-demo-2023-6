@@ -1,4 +1,4 @@
-package com.raisetech.mybatisdemo20236;
+package com.raisetech.mybatisdemo20236.entity;
 
 public class Name {
     private int id;

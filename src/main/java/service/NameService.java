@@ -1,4 +1,6 @@
-package com.raisetech.mybatisdemo20236;
+package service;
+
+import com.raisetech.mybatisdemo20236.entity.Name;
 
 import java.util.List;
 
