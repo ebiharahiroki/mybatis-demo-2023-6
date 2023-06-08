@@ -1,11 +1,10 @@
-DROP TABLE IF EXISTS names;
+DROP TABLE IF EXISTS anime;
 
-CREATE TABLE names (
+CREATE TABLE anime (
   id int unsigned AUTO_INCREMENT,
-  name VARCHAR(20) NOT NULL,
+  title VARCHAR(100) NOT NULL,
+  published_year VARCHAR(4) NOT NULL,
   PRIMARY KEY(id)
 );
 
-INSERT INTO names (id, name) VALUES (1, "tanaka");
-INSERT INTO names (id, name) VALUES (2, "suzuki");
-INSERT INTO names (id, name) VALUES (3, "yamada");
+INSERT INTO anime (title, evaluated_value) VALUES ('地獄楽','評価4');
