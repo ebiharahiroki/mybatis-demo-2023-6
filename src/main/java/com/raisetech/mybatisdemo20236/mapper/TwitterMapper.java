@@ -1,15 +1,15 @@
 package com.raisetech.mybatisdemo20236.mapper;
 
-import com.raisetech.mybatisdemo20236.entity.Anime;
+import com.raisetech.mybatisdemo20236.entity.Twitter;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
 @Mapper
-public interface AnimeMapper {
-    @Select("SELECT * FROM anime")
-    List<Anime> findAll();
+public interface TwitterMapper {
+    @Select("SELECT * FROM twitter")
+    List<Twitter> findAll();
 
 //    Optional<Anime> findById(int id);
 //

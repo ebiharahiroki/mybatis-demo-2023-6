@@ -1,10 +1,10 @@
-DROP TABLE IF EXISTS anime;
+DROP TABLE IF EXISTS twitter;
 
-CREATE TABLE anime (
+CREATE TABLE twitter (
   id int unsigned AUTO_INCREMENT,
-  title VARCHAR(100) NOT NULL,
-  published_year VARCHAR(4) NOT NULL,
+  Likes VARCHAR(100) NOT NULL,
+  Followers VARCHAR(3) NOT NULL,
   PRIMARY KEY(id)
 );
 
-INSERT INTO anime (title, evaluated_value) VALUES ('地獄楽','評価4');
+INSERT INTO twitter (id, Likes, Followers) VALUES (1, "15", "112");

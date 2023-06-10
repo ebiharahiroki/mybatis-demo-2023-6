@@ -1,13 +1,13 @@
 package com.raisetech.mybatisdemo20236.service;
 
-import com.raisetech.mybatisdemo20236.entity.Anime;
+import com.raisetech.mybatisdemo20236.entity.Twitter;
 
 import java.util.List;
 
-public interface AnimeService {
+public interface TwitterService {
 
     //    名前を全部取得する
-    List<Anime> findAll();
+    List<Twitter> findAll();
 
 //    Anime findById(int id);
 //

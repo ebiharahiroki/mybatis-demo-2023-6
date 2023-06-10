@@ -1,27 +1,27 @@
 package com.raisetech.mybatisdemo20236.service;
 
-import com.raisetech.mybatisdemo20236.entity.Anime;
-import com.raisetech.mybatisdemo20236.mapper.AnimeMapper;
+import com.raisetech.mybatisdemo20236.entity.Twitter;
+import com.raisetech.mybatisdemo20236.mapper.TwitterMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class AnimeServiceImpl implements AnimeService {
+public class TwitterServiceImpl implements TwitterService {
 
-    private final AnimeMapper animeMappaer;
+    private final TwitterMapper twitterMapper;
 
-    public AnimeServiceImpl(AnimeMapper animeMapper) {
-        this.animeMappaer = animeMapper;
+    public TwitterServiceImpl(TwitterMapper twitterMapper) {
+        this.twitterMapper = twitterMapper;
     }
 
-    public List<Anime> findAll() {
-        return animeMappaer.findAll();
+    public List<Twitter> findAll() {
+        return twitterMapper.findAll();
     }
 
 //    @Override
 //    public List<Anime> findAll() {
-//        return animeMappaer.findAll();
+//        return animeMapper.findAll();
 //    }
 //
 //    @Override
@@ -37,7 +37,7 @@ public class AnimeServiceImpl implements AnimeService {
 //
 //    @Override
 //    public Optional<Anime> findByEvaluatedValue(String evaluated_value) {
-//        return this.animeMappaer.findByEvaluatedValue(evaluated_value);
+//        return this.animeMapper.findByEvaluatedValue(evaluated_value);
 //    }
 
 }
