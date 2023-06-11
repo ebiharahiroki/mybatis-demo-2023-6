@@ -32,8 +32,8 @@ public class TwitterController {
     }
 
     @GetMapping("/twitter")
-    public List<Twitter> selectUsersByFollowers(@RequestParam(value = "followers", required = false) String followers) {
-        return twitterService.findByFollowers(followers);
+    public List<Twitter> selectUsersByLikes(@RequestParam(value = "likes", required = false) Integer likes) {
+        return twitterService.findByLikes(likes);
     }
 
 

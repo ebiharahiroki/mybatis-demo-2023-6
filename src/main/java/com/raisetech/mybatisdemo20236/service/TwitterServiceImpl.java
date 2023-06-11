@@ -7,6 +7,7 @@ import com.raisetech.mybatisdemo20236.mapper.TwitterMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class TwitterServiceImpl implements TwitterService {
@@ -26,9 +27,9 @@ public class TwitterServiceImpl implements TwitterService {
                 .orElseThrow(() -> new ResourceNotFoundException("This id is not found"));
     }
 
-    public List<Twitter> findByFollowers(String followers) {
-        if (followers != null) {
-            return twitterMapper.findByFollowersGreaterThan(followers);
+    public List<Twitter> findByLikes(Integer likes) {
+        if (likes != null) {
+            return twitterMapper.findByLikesGreaterThan(likes);
         } else {
             return twitterMapper.findAll();
         }
@@ -39,6 +40,19 @@ public class TwitterServiceImpl implements TwitterService {
         Twitter twitter = new Twitter(form.getId(), form.getLikes(), form.getFollowers());
         twitterMapper.createTwitter(twitter);
         return twitter;
+    }
+
+    @Override
+    public void updateTwitter(Twitter updateTwitter) {
+        Twitter user = twitterMapper.findById(updateTwitter.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("This id is not found"));
+        if (Objects.isNull(updateTwitter.getLikes())) {
+            updateTwitter.setLikes(user.getLikes());
+        }
+        if (Objects.isNull(updateTwitter.getFollowers())) {
+            updateTwitter.setFollowers(user.getFollowers());
+        }
+        twitterMapper.updateTwitter(updateTwitter);
     }
 
 //    @Override

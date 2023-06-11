@@ -12,9 +12,11 @@ public interface TwitterService {
 
     Twitter findById(int id);
 
-    List<Twitter> findByFollowers(String followers);
+    List<Twitter> findByLikes(Integer likes);
 
     Twitter createTwitter(TwitterCreateForm form);
+
+    void updateTwitter(Twitter updateTwitter);
 //    Anime findById(int id);
 //
 //    Anime findByEvaluated_Value(String evaluated_value);
