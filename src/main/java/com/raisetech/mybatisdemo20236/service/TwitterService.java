@@ -17,9 +17,6 @@ public interface TwitterService {
     Twitter createTwitter(TwitterCreateForm form);
 
     void updateTwitter(Twitter updateTwitter);
-//    Anime findById(int id);
-//
-//    Anime findByEvaluated_Value(String evaluated_value);
-//
-//    Optional<Anime> findByEvaluatedValue(String evaluated_value);とりあえずシンプルにするためにコメントで保留
+
+    void deleteTwitter(int id);
 }

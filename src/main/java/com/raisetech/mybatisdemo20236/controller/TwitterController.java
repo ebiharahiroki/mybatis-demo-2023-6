@@ -26,37 +26,38 @@ public class TwitterController {
         this.twitterService = twitterService;
     }
 
-    @GetMapping("/twitter/{id}")
+    @GetMapping("/tweets/{id}")
     public Twitter selectUserById(@PathVariable("id") int id) {
         return twitterService.findById(id);
     }
 
-    @GetMapping("/twitter")
+    @GetMapping("/tweets")
     public List<Twitter> selectUsersByLikes(@RequestParam(value = "likes", required = false) Integer likes) {
         return twitterService.findByLikes(likes);
     }
 
 
-    @PostMapping("/twitter")
+    @PostMapping("/tweets")
     public ResponseEntity<Map<String, String>> create(@RequestBody @Validated TwitterCreateForm form, UriComponentsBuilder uriBuilder) {
 
         Twitter twitter = twitterService.createTwitter(form);
         URI url = uriBuilder
-                .path("/twitter/" + twitter.getId())
+                .path("/tweets/" + twitter.getId())
                 .build()
                 .toUri();
 
         return ResponseEntity.created(url).body(Map.of("message", "twitter`s information successfully created"));
     }
 
-    @PatchMapping("/twitter/{id}")
-    public ResponseEntity<Map<String, String>> updateTwitter(@PathVariable("id") int id, @RequestBody TwitterUpdateForm nameUpdateForm) {
+    @PatchMapping("/tweets/{id}")
+    public ResponseEntity<Map<String, String>> updateTwitter(@PathVariable("id") int id, @RequestBody TwitterUpdateForm twitterUpdateForm) {
         return ResponseEntity.ok(Map.of("message", "twitter`s information successfully updated"));
     }
 
-    @DeleteMapping("/twitter/{id}")
-    public ResponseEntity<Map<String, String>> deleteTwitter(@PathVariable("id") int id) {
-        return ResponseEntity.ok(Map.of("message", "twitter`s information successfully deleted"));
+    @DeleteMapping("/tweets/{id}")
+    public ResponseEntity<Map<String, String>> delete(@PathVariable("id") int id) {
+        twitterService.deleteTwitter(id);
+        return ResponseEntity.ok(Map.of("message", "user successfully deleted"));
     }
 
     @ExceptionHandler(value = ResourceNotFoundException.class)
@@ -70,24 +71,4 @@ public class TwitterController {
                 "path", request.getRequestURI());
         return new ResponseEntity(body, HttpStatus.NOT_FOUND);
     }
-
-//    @GetMapping("/anime")
-//    public List<AnimeResponse> anime() {
-//        List<Anime> anime = animeService.findAll();
-//        List<AnimeResponse> animeResponse = animeAll.stream()
-//                .map(AnimeResponse::new)
-//                .toList();
-//        return animeResponse;エラーが出たためとりあえず保留
-
-
-//    @GetMapping("/names")
-//    public List<Name> getAnime_moviesByPublished_year(@RequestParam(value = "published_year") String published_year) {
-//        Optional<Name> anime_movies = Optional.ofNullable(NameService.findByPublishedYear(published_year));
-//        List<NameResponse> anime_MoviesResponse = anime_movies.stream()
-//                .map(NameResponse::new)
-//                .toList();
-//        return nameResponse;
-//    }
-
-
 }

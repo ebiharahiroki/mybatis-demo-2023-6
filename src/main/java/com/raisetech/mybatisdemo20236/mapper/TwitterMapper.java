@@ -24,7 +24,6 @@ public interface TwitterMapper {
     @Update("UPDATE twitter SET likes = #{likes}, followers = #{followers} where id = #{id}")
     void updateTwitter(Twitter updateTwitter);
 
-//    Optional<Anime> findById(int id);
-//
-//    Optional<Anime> findByEvaluatedValue(String evaluated_value);問題が出たためコメントアウト
+    @Delete("DELETE FROM twitter WHERE id = #{id}")
+    void deleteTwitter(int id);
 }
