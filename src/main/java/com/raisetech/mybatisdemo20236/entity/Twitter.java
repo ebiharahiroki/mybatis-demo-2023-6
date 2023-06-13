@@ -1,10 +1,14 @@
 package com.raisetech.mybatisdemo20236.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 @AllArgsConstructor
-@Data
+@EqualsAndHashCode
+@Getter
+@Setter
 public class Twitter {
 
     private int id;
