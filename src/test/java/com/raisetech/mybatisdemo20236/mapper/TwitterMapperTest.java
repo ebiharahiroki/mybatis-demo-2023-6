@@ -34,14 +34,6 @@ class TwitterMapperTest {
     }
 
     @Test
-    @DataSet(value = "datasets/twitter.yml")
-    @Transactional
-    void 指定したIDのツイートが存在しない時に空のOptionalが返されること() {
-        assertThat(twitterMapper.findById(4)).isEmpty();
-    }
-
-
-    @Test
     @DataSet(value = "datasets/empty.yml")
     @Transactional
     void DBが空の時に空のリストが返されること() {
@@ -56,6 +48,13 @@ class TwitterMapperTest {
                 .contains(new Twitter(1, 10, "112"));
     }
 
+    @Test
+    @DataSet(value = "datasets/twitter.yml")
+    @Transactional
+    void 指定したIDのツイートが存在しない時に空のOptionalが返されること() {
+        assertThat(twitterMapper.findById(4)).isEmpty();
+    }
+    
     @Test
     @DataSet(value = "datasets/twitter.yml")
     @Transactional
@@ -101,7 +100,3 @@ class TwitterMapperTest {
         twitterMapper.deleteTwitter(3);
     }
 }
-
-
-
-
