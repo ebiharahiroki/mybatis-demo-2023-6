@@ -1,15 +1,17 @@
 package com.raisetech.mybatisdemo20236.form;
 
+import com.raisetech.mybatisdemo20236.entity.Twitter;
+import lombok.Getter;
+
+@Getter
 public class TwitterUpdateForm {
 
-    private String likes;
+    private Integer likes;
 
-    public String getLikes() {
-        return likes;
-    }
+    private String followers;
 
-    public void setLikes(String likes) {
-        this.likes = likes;
+    public Twitter convertToTwitter(int id) {
+        Twitter updateTwitter = new Twitter(id, likes, followers);
+        return updateTwitter;
     }
 }
-
