@@ -38,7 +38,7 @@ public class TwitterController {
 
 
     @PostMapping("/twitter")
-    public ResponseEntity<Map<String, String>> createName(@Validated TwitterCreateForm form, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<Map<String, String>> create(@RequestBody @Validated TwitterCreateForm form, UriComponentsBuilder uriBuilder) {
 
         Twitter twitter = twitterService.createTwitter(form);
         URI url = uriBuilder

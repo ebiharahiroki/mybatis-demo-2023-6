@@ -8,5 +8,5 @@ CREATE TABLE twitter (
 );
 
 INSERT INTO twitter (id, likes, Followers) VALUES (1, 10, "112");
-INSERT INTO twitter (id, likes, Followers) VALUES (1, 15, "112");
+INSERT INTO twitter (id, likes, Followers) VALUES (2, 15, "112");
 
