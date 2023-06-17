@@ -6,6 +6,7 @@ import com.raisetech.mybatisdemo20236.form.TwitterCreateForm;
 import com.raisetech.mybatisdemo20236.form.TwitterUpdateForm;
 import com.raisetech.mybatisdemo20236.service.TwitterService;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -17,28 +18,25 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
 
+@AllArgsConstructor
 @RestController
 public class TwitterController {
 
     private final TwitterService twitterService;
 
-    public TwitterController(TwitterService twitterService) {
-        this.twitterService = twitterService;
-    }
-
     @GetMapping("/tweets/{id}")
-    public Twitter selectUserById(@PathVariable("id") int id) {
+    public Twitter selectTwitterById(@PathVariable("id") int id) {
         return twitterService.findById(id);
     }
 
     @GetMapping("/tweets")
-    public List<Twitter> selectUsersByLikes(@RequestParam(value = "likes", required = false) Integer likes) {
+    public List<Twitter> selectTwitterByLikes(@RequestParam(value = "likes", required = false) Integer likes) {
         return twitterService.findByLikes(likes);
     }
 
 
     @PostMapping("/tweets")
-    public ResponseEntity<Map<String, String>> create(@RequestBody @Validated TwitterCreateForm form, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<Map<String, String>> createTwitter(@RequestBody @Validated TwitterCreateForm form, UriComponentsBuilder uriBuilder) {
 
         Twitter twitter = twitterService.createTwitter(form);
         URI url = uriBuilder
@@ -55,7 +53,7 @@ public class TwitterController {
     }
 
     @DeleteMapping("/tweets/{id}")
-    public ResponseEntity<Map<String, String>> delete(@PathVariable("id") int id) {
+    public ResponseEntity<Map<String, String>> deleteTwitter(@PathVariable("id") int id) {
         twitterService.deleteTwitter(id);
         return ResponseEntity.ok(Map.of("message", "user successfully deleted"));
     }
