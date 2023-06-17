@@ -1,16 +1,19 @@
 package com.raisetech.mybatisdemo20236.controller;
 
-import com.raisetech.mybatisdemo20236.TwitterCreateForm;
 import com.raisetech.mybatisdemo20236.entity.Twitter;
+import com.raisetech.mybatisdemo20236.exception.ResourceNotFoundException;
+import com.raisetech.mybatisdemo20236.form.TwitterCreateForm;
+import com.raisetech.mybatisdemo20236.form.TwitterUpdateForm;
 import com.raisetech.mybatisdemo20236.service.TwitterService;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -23,29 +26,50 @@ public class TwitterController {
         this.twitterService = twitterService;
     }
 
-    @GetMapping("/twitter")
-    public List<TwitterResponse> anime() {
-        List<Twitter> twitter = twitterService.findAll();
-        List<TwitterResponse> twitterResponse = twitter.stream().map(TwitterResponse::new).toList();
-        return twitterResponse;
+    @GetMapping("/twitter/{id}")
+    public Twitter selectUserById(@PathVariable("id") int id) {
+        return twitterService.findById(id);
     }
 
+    @GetMapping("/twitter")
+    public List<Twitter> selectUsersByFollowers(@RequestParam(value = "followers", required = false) String followers) {
+        return twitterService.findByFollowers(followers);
+    }
+
+
     @PostMapping("/twitter")
-    public ResponseEntity<Map<String, String>> createName(@RequestBody TwitterCreateForm twitterCreateForm) {
-        // 登録処理は割愛
-        URI url = UriComponentsBuilder.fromUriString("http://localhost:8080").path("/twitter/id")
+    public ResponseEntity<Map<String, String>> createName(@Validated TwitterCreateForm form, UriComponentsBuilder uriBuilder) {
+
+        Twitter twitter = twitterService.createTwitter(form);
+        URI url = uriBuilder
+                .path("/twitter/" + twitter.getId())
                 .build()
                 .toUri();
 
-        System.out.println("==================");
-        System.out.println(twitterCreateForm.getId());
-        System.out.println(twitterCreateForm.getLikes());
-        System.out.println(twitterCreateForm.getFollowers());
-        System.out.println("===================");
-
-        return ResponseEntity.created(url).body(Map.of("message", "name successfully created"));
+        return ResponseEntity.created(url).body(Map.of("message", "twitter`s information successfully created"));
     }
 
+    @PatchMapping("/twitter/{id}")
+    public ResponseEntity<Map<String, String>> updateTwitter(@PathVariable("id") int id, @RequestBody TwitterUpdateForm nameUpdateForm) {
+        return ResponseEntity.ok(Map.of("message", "twitter`s information successfully updated"));
+    }
+
+    @DeleteMapping("/twitter/{id}")
+    public ResponseEntity<Map<String, String>> deleteTwitter(@PathVariable("id") int id) {
+        return ResponseEntity.ok(Map.of("message", "twitter`s information successfully deleted"));
+    }
+
+    @ExceptionHandler(value = ResourceNotFoundException.class)
+    public ResponseEntity<Map<String, String>> handleNoResourceFound(
+            ResourceNotFoundException e, HttpServletRequest request) {
+        Map<String, String> body = Map.of(
+                "timestamp", ZonedDateTime.now().toString(),
+                "status", String.valueOf(HttpStatus.NOT_FOUND.value()),
+                "error", HttpStatus.NOT_FOUND.getReasonPhrase(),
+                "message", e.getMessage(),
+                "path", request.getRequestURI());
+        return new ResponseEntity(body, HttpStatus.NOT_FOUND);
+    }
 
 //    @GetMapping("/anime")
 //    public List<AnimeResponse> anime() {
