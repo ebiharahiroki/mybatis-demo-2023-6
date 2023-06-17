@@ -1,10 +1,7 @@
 package com.raisetech.mybatisdemo20236.mapper;
 
 import com.raisetech.mybatisdemo20236.entity.Twitter;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,12 +14,15 @@ public interface TwitterMapper {
     @Select("SELECT * FROM twitter WHERE id = #{id}")
     Optional<Twitter> findById(int id);
 
-    @Select("SELECT * FROM twitter WHERE followers > #{followers}")
-    List<Twitter> findByFollowersGreaterThan(String followers);
+    @Select("SELECT * FROM twitter WHERE likes > #{likes}")
+    List<Twitter> findByLikesGreaterThan(int likes);
 
     @Insert("INSERT INTO twitter (likes, followers) VALUES (#{likes}, #{followers})")
-    @Options(twitterGeneratedKeys = true, keyProperty = "id")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
     void createTwitter(Twitter twitter);
+
+    @Update("UPDATE twitter SET likes = #{likes}, followers = #{followers} where id = #{id}")
+    void updateTwitter(Twitter updateTwitter);
 
 //    Optional<Anime> findById(int id);
 //

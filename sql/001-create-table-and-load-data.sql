@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS twitter;
 
 CREATE TABLE twitter (
   id int unsigned AUTO_INCREMENT,
-  likes VARCHAR(100) NOT NULL,
+  likes Integer NOT NULL,
   Followers VARCHAR(3) NOT NULL,
   PRIMARY KEY(id)
 );
