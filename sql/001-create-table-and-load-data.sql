@@ -1,11 +1,10 @@
-DROP TABLE IF EXISTS names;
+DROP TABLE IF EXISTS twitter;
 
-CREATE TABLE names (
+CREATE TABLE twitter (
   id int unsigned AUTO_INCREMENT,
-  name VARCHAR(20) NOT NULL,
+  Likes VARCHAR(100) NOT NULL,
+  Followers VARCHAR(3) NOT NULL,
   PRIMARY KEY(id)
 );
 
-INSERT INTO names (id, name) VALUES (1, "tanaka");
-INSERT INTO names (id, name) VALUES (2, "suzuki");
-INSERT INTO names (id, name) VALUES (3, "yamada");
+INSERT INTO twitter (id, Likes, Followers) VALUES (1, "15", "112");
