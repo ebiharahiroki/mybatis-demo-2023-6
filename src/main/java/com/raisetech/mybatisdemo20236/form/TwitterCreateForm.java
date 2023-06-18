@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class TwitterCreateForm {
 
-    private Integer Likes;
+    private Integer likes;
 
-    private String Followers;
+    private String followers;
 }
