@@ -15,7 +15,7 @@ public interface TwitterMapper {
     Optional<Twitter> findById(int id);
 
     @Select("SELECT * FROM twitter WHERE likes > #{likes}")
-    List<Twitter> findByLikesGreaterThan(int likes);
+    List<Twitter> findByLikesGreaterThan(Integer likes);
 
     @Insert("INSERT INTO twitter (likes, followers) VALUES (#{likes}, #{followers})")
     @Options(useGeneratedKeys = true, keyProperty = "id")

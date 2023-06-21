@@ -44,18 +44,18 @@ public class TwitterController {
                 .build()
                 .toUri();
 
-        return ResponseEntity.created(url).body(Map.of("message", "twitter`s information successfully created"));
+        return ResponseEntity.created(url).body(Map.of("message", "tweets information successfully created"));
     }
 
     @PatchMapping("/tweets/{id}")
     public ResponseEntity<Map<String, String>> updateTwitter(@PathVariable("id") int id, @RequestBody TwitterUpdateForm twitterUpdateForm) {
-        return ResponseEntity.ok(Map.of("message", "twitter`s information successfully updated"));
+        return ResponseEntity.ok(Map.of("message", "tweets information successfully updated"));
     }
 
     @DeleteMapping("/tweets/{id}")
     public ResponseEntity<Map<String, String>> deleteTwitter(@PathVariable("id") int id) {
         twitterService.deleteTwitter(id);
-        return ResponseEntity.ok(Map.of("message", "user successfully deleted"));
+        return ResponseEntity.ok(Map.of("message", "tweets information successfully deleted"));
     }
 
     @ExceptionHandler(value = ResourceNotFoundException.class)

@@ -16,12 +16,12 @@ public interface TwitterService {
     //    いいねの数を取得する
     List<Twitter> findByLikes(Integer likes);
 
-    //ツイート情報を登録する
+    //　　 ツイート情報を登録する
     Twitter createTwitter(TwitterCreateForm form);
 
-    //    ツイート情報を更新する
+    //     ツイート情報を更新する
     void updateTwitter(Twitter updateTwitter);
 
-    //    指定したIDのツイート情報を削除する
+    //     指定したIDのツイート情報を削除する
     void deleteTwitter(int id);
 }
