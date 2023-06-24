@@ -36,7 +36,8 @@ public class TwitterController {
 
 
     @PostMapping("/tweets")
-    public ResponseEntity<Map<String, String>> createTwitter(@RequestBody @Validated TwitterCreateForm form, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<Map<String, String>> createTwitter(
+            @RequestBody @Validated TwitterCreateForm form, UriComponentsBuilder uriBuilder) {
 
         Twitter twitter = twitterService.createTwitter(form);
         URI url = uriBuilder
@@ -48,7 +49,9 @@ public class TwitterController {
     }
 
     @PatchMapping("/tweets/{id}")
-    public ResponseEntity<Map<String, String>> updateTwitter(@PathVariable("id") int id, @RequestBody TwitterUpdateForm twitterUpdateForm) {
+    public ResponseEntity<Map<String, String>> updateTwitter(
+            @PathVariable("id") int id, @RequestBody TwitterUpdateForm twitterUpdateForm) {
+        twitterService.updateTwitter(twitterUpdateForm.convertToTwitter(id));
         return ResponseEntity.ok(Map.of("message", "tweets information successfully updated"));
     }
 
