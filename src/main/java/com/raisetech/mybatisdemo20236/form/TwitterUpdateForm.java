@@ -11,6 +11,6 @@ public class TwitterUpdateForm {
     private String followers;
 
     public Twitter convertToTwitter(int id) {
-        return new Twitter(likes, followers);
+        return new Twitter(id, likes, followers);
     }
 }

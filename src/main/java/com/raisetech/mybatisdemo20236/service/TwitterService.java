@@ -6,10 +6,6 @@ import com.raisetech.mybatisdemo20236.form.TwitterCreateForm;
 import java.util.List;
 
 public interface TwitterService {
-
-    //    名前を全部取得する
-    List<Twitter> findAll();
-
     //    IDを取得する
     Twitter findById(int id);
 

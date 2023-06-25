@@ -256,7 +256,7 @@ public class TwitterRestApiIntegrationTest {
                         .content("""
                                 {
                                 "likes": null,
-                                "followers": "115"
+                                "followers": "116"
                                 }
                                 """))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -280,7 +280,7 @@ public class TwitterRestApiIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content("""
                                 {
-                                "likes": 20,
+                                "likes": 25,
                                 "followers": null
                                 }
                                 """))
