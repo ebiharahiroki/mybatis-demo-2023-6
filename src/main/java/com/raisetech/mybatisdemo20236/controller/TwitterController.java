@@ -36,7 +36,7 @@ public class TwitterController {
     }
 
 
-    @PostMapping("/tweets/")
+    @PostMapping("/tweets")
     public ResponseEntity<Map<String, String>> createTwitter(
             @RequestBody @Validated TwitterCreateForm form, UriComponentsBuilder uriBuilder) {
 
