@@ -57,5 +57,4 @@ public class TwitterServiceImpl implements TwitterService {
                 .orElseThrow(() -> new ResourceNotFoundException("This id is not found"));
         twitterMapper.deleteTwitter(id);
     }
-
 }

@@ -212,7 +212,7 @@ public class TwitterRestApiIntegrationTest {
                             "timestamp": "2023-06-05T18:13:22.414491+09:00[Asia/Tokyo]",
                             "status": "400",
                             "error": "Bad Request",
-                            "message": "Please enter your likes and followers",
+                            "message":"default message",
                             "path": "/tweets"
                         }
                         """,
@@ -235,7 +235,7 @@ public class TwitterRestApiIntegrationTest {
                                 "followers": "115"
                                 }
                                 """))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
 
         JSONAssert.assertEquals("""
@@ -259,7 +259,7 @@ public class TwitterRestApiIntegrationTest {
                                 "followers": "116"
                                 }
                                 """))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
 
         JSONAssert.assertEquals("""
@@ -284,7 +284,7 @@ public class TwitterRestApiIntegrationTest {
                                 "followers": null
                                 }
                                 """))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
 
         JSONAssert.assertEquals("""
