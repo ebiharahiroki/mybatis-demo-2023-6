@@ -117,7 +117,7 @@ public class TwitterRestApiIntegrationTest {
                 """, response, JSONCompareMode.STRICT);
     }
 
-    // GETメソッドでクエリパラメータでいいねの数を指定した時に、指定した年齢より上のツイート情報が取得できステータスコード200が返されること
+    // GETメソッドでクエリパラメータでいいねの数を指定した時に、指定したいいねの数より上のツイート情報が取得できステータスコード200が返されること
     @Test
     @DataSet(value = "datasets/twitter.yml")
     @Transactional
@@ -221,7 +221,7 @@ public class TwitterRestApiIntegrationTest {
                         new Customization("timestamp", ((o1, o2) -> true))));
     }
 
-    // PATCHメソッドで存在するIDを指定した時に、ツイート情報が更新できステータスコード200とメッセージが返されること
+    // PATCHメソッドで存在するIDを指定した時に、ツイート情報が更新できステータスコード201とメッセージが返されること
     @Test
     @DataSet(value = "datasets/twitter.yml")
     @ExpectedDataSet(value = "datasets/update_twitter.yml")
@@ -245,7 +245,7 @@ public class TwitterRestApiIntegrationTest {
                 """, response, JSONCompareMode.STRICT);
     }
 
-    // PATCHメソッドで存在するIDを指定しリクエストのlikesがnullの時に、followersのみ更新されステータスコード200とメッセージが返されること
+    // PATCHメソッドで存在するIDを指定しリクエストのlikesがnullの時に、followersのみ更新されステータスコード201とメッセージが返されること
     @Test
     @DataSet(value = "datasets/twitter.yml")
     @ExpectedDataSet(value = "datasets/update_twitter_followers.yml")
@@ -269,7 +269,7 @@ public class TwitterRestApiIntegrationTest {
                 """, response, JSONCompareMode.STRICT);
     }
 
-    // PATCHメソッドで存在するIDを指定しリクエストのfollowersがnullの時に、likesのみ更新されステータスコード200とメッセージが返されること
+    // PATCHメソッドで存在するIDを指定しリクエストのfollowersがnullの時に、likesのみ更新されステータスコード201とメッセージが返されること
     @Test
     @DataSet(value = "datasets/twitter.yml")
     @ExpectedDataSet(value = "datasets/update_twitter_likes.yml")
