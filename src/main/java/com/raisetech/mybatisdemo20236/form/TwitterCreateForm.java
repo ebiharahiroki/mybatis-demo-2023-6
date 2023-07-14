@@ -1,6 +1,5 @@
 package com.raisetech.mybatisdemo20236.form;
 
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +9,7 @@ import lombok.Getter;
 public class TwitterCreateForm {
     @NotNull
     private Integer likes;
-    @NotBlank
+    //    @NotBlank
+    @NotNull
     private String followers;
 }

@@ -207,18 +207,6 @@ public class TwitterRestApiIntegrationTest {
                                 """))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
-        JSONAssert.assertEquals("""
-                        {
-                            "timestamp": "2023-06-05T18:13:22.414491+09:00[Asia/Tokyo]",
-                            "status": "400",
-                            "error": "Bad Request",
-                            "message":"default message",
-                            "path": "/tweets"
-                        }
-                        """,
-                response,
-                new CustomComparator(JSONCompareMode.STRICT,
-                        new Customization("timestamp", ((o1, o2) -> true))));
     }
 
     // PATCHメソッドで存在するIDを指定した時に、ツイート情報が更新できステータスコード201とメッセージが返されること

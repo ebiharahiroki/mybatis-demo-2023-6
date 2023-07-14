@@ -52,12 +52,18 @@ public class TwitterController {
                 .path("/tweets/")
                 .build()
                 .toUri();
-        return ResponseEntity.created(url).body(Map.of("message", "tweets information successfully updated"));
+        if (updateTwitter(id, twitterUpdateForm, uriBuilder) != null) {
+            return ResponseEntity.created(url).body(Map.of("message", "tweets information successfully updated"));
+        }
+        return null;
     }
 
     @DeleteMapping("/tweets/{id}")
     public ResponseEntity<Map<String, String>> deleteTwitter(@PathVariable("id") int id) {
         twitterService.deleteTwitter(id);
-        return ResponseEntity.ok(Map.of("message", "tweets information successfully deleted"));
+        if (deleteTwitter(id) != null) {
+            return ResponseEntity.ok(Map.of("message", "tweets information successfully deleted"));
+        }
+        return null;
     }
 }
